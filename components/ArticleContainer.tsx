@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import { useXMLResponse } from '../hooks/useXMLResponse';
 
@@ -7,6 +7,8 @@ import {
   useRenderElementsArr,
   RenderElementsArrProps,
 } from '../hooks/useRenderElementsArr';
+
+import styles from '../styles/App.styles';
 
 type ArticleContainerProps = {
   navigation: any;
@@ -35,9 +37,8 @@ export default function ArticleContainer({
   const articleCards = useRenderElementsArr(elementsToRender);
 
   return (
-    <View>
-      <Text>Container</Text>
-      {articleCards}
-    </View>
+    <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.flex}>
+      <View style={styles.flex}>{articleCards}</View>
+    </ScrollView>
   );
 }

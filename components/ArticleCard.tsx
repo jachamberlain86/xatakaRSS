@@ -26,7 +26,7 @@ export default function ArticleCard({
       <View>
         <Image source={{ uri: articleData.image }} style={styles.cardImage} />
         <Text>{articleData.title}</Text>
-        <Text>{articleData.description}</Text>
+        <Text numberOfLines={2}>{articleData.description}</Text>
       </View>
     </Pressable>
   ) : null;

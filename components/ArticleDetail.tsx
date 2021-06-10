@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, ScrollView, Pressable } from 'react-native';
+import moment from 'moment';
+
+import styles from '../styles/App.styles';
 
 type ArticleDetailProps = {
   navigation: any;
@@ -12,8 +15,21 @@ export default function ArticleDetail({
 }: ArticleDetailProps): JSX.Element {
   const { articleData } = route.params;
   return (
-    <View>
-      <Text>{articleData.title}</Text>
-    </View>
+    <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.flex}>
+      <View style={styles.flex}>
+        <Image source={{ uri: articleData.image }} style={styles.cardImage} />
+        <Text>{articleData.title}</Text>
+        <Text>{articleData.author}</Text>
+        <Text>{moment(articleData.pubDate).format('HH:mm, DD/MM/YY')}</Text>
+        <Text>{articleData.description}</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('External Article', { articleData });
+          }}
+        >
+          <Text>Ver en el nevegador</Text>
+        </Pressable>
+      </View>
+    </ScrollView>
   );
 }
