@@ -15,9 +15,7 @@ export function useXMLResponse({ url }: XMLResponseProps): Feed | null {
 
     fetch(url, { signal })
       .then((response: Response) => response.text())
-      .then((textResponse: string) =>
-        parse(textResponse, { parseAttributeValue: true }, true)
-      )
+      .then((textResponse: string) => parse(textResponse, {}, true))
       .then((parsedResponse: Feed) => setParsedFeed(parsedResponse));
 
     return function cancel() {

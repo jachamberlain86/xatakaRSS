@@ -1,19 +1,29 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Pressable,
+  Linking,
+} from 'react-native';
 import moment from 'moment';
 
 import styles from '../styles/App.styles';
 
 type ArticleDetailProps = {
-  navigation: any;
   route: any;
 };
 
 export default function ArticleDetail({
-  navigation,
   route,
 }: ArticleDetailProps): JSX.Element {
   const { articleData } = route.params;
+
+  function loadInBrowser(): void {
+    Linking.openURL(articleData.link).catch((error) => console.log(error));
+  }
+
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.flex}>
       <View style={styles.flex}>
@@ -24,7 +34,7 @@ export default function ArticleDetail({
         <Text>{articleData.description}</Text>
         <Pressable
           onPress={() => {
-            navigation.navigate('External Article', { articleData });
+            loadInBrowser();
           }}
         >
           <Text>Ver en el nevegador</Text>
