@@ -33,7 +33,31 @@ export function useFormatArticle({
     }
 
     function extractTextFromCDATA(htmlString: string): string {
-      return htmlString;
+      const regex = /<[^>]*>|{[^}]*}/g;
+      const splitHtml = htmlString.split(regex);
+      const paragraphs: string[] = [];
+      let paragraphIndex = 0;
+      let newParagraph = true;
+      splitHtml.forEach((string) => {
+        const isNewLine = /^\n/;
+        if (
+          string &&
+          string.length &&
+          string !== ' ' &&
+          !isNewLine.test(string)
+        ) {
+          newParagraph = false;
+          if (paragraphs[paragraphIndex]) paragraphs[paragraphIndex] += string;
+          else paragraphs[paragraphIndex] = string;
+        }
+        if (string && isNewLine.test(string) && newParagraph === false) {
+          newParagraph = true;
+          paragraphIndex += 1;
+        }
+      });
+      console.log(paragraphs);
+      const extractedText = paragraphs.join('\n\n');
+      return extractedText;
     }
 
     if (originalArticle) {
