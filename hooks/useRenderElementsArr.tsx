@@ -6,10 +6,12 @@ import { UnformattedArticle } from '../types/articles.types';
 
 export type RenderElementsArrProps = {
   elementsArr: UnformattedArticle[] | null;
+  navigation: any;
 };
 
 export function useRenderElementsArr({
   elementsArr,
+  navigation,
 }: RenderElementsArrProps): JSX.Element[] {
   const [elements, setElements] = useState<JSX.Element[]>([
     <Text key={uuidv4()}>Loading...</Text>,
@@ -18,7 +20,13 @@ export function useRenderElementsArr({
   useEffect(() => {
     if (elementsArr) {
       const renderedElementsArr = elementsArr.map((element) => {
-        return <ArticleCard key={uuidv4()} content={element} />;
+        return (
+          <ArticleCard
+            key={uuidv4()}
+            content={element}
+            navigation={navigation}
+          />
+        );
       });
 
       setElements(renderedElementsArr);

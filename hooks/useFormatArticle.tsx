@@ -55,7 +55,6 @@ export function useFormatArticle({
           paragraphIndex += 1;
         }
       });
-      console.log(paragraphs);
       const extractedText = paragraphs.join('\n\n');
       return extractedText;
     }

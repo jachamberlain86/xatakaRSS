@@ -8,13 +8,20 @@ import {
   RenderElementsArrProps,
 } from '../hooks/useRenderElementsArr';
 
-export default function ArticleContainer(): JSX.Element {
+type ArticleContainerProps = {
+  navigation: any;
+};
+
+export default function ArticleContainer({
+  navigation,
+}: ArticleContainerProps): JSX.Element {
   const parsedFeed = useXMLResponse({
     url: 'https://www.xatakandroid.com/tag/feeds/rss2.xml',
   });
 
   const elementsToRender: RenderElementsArrProps = {
     elementsArr: null,
+    navigation,
   };
 
   if (parsedFeed) {
