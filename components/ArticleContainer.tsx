@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 
+/* logic to fetch XML data from URL and generate array
+of elements moved to custom hooks to be more reusable */
 import { useXMLResponse } from '../hooks/useXMLResponse';
-
 import {
   useRenderElementsArr,
   RenderElementsArrProps,
@@ -11,6 +12,8 @@ import {
 import styles from '../styles/App.styles';
 
 type ArticleContainerProps = {
+  // Need to find correct type to use for navigation prop
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   navigation: any;
 };
 
@@ -26,6 +29,7 @@ export default function ArticleContainer({
     navigation,
   };
 
+  // Sorts articles by date from latest to olders
   if (parsedFeed) {
     const elementsArr = parsedFeed.rss.channel.item;
     elementsArr.sort((a, b) => {

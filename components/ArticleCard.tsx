@@ -2,14 +2,13 @@ import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import { useFormatArticle } from '../hooks/useFormatArticle';
 
-import ArticleDetail from './ArticleDetail';
-
 import { UnformattedArticle } from '../types/articles.types';
 
 import styles from '../styles/App.styles';
 
 type ArticleCardProps = {
   content: UnformattedArticle;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   navigation: any;
 };
 

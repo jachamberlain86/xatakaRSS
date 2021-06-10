@@ -7,11 +7,15 @@ import {
   Pressable,
   Linking,
 } from 'react-native';
+
+// moment imported to easily format date
 import moment from 'moment';
 
 import styles from '../styles/App.styles';
 
 type ArticleDetailProps = {
+  // Need to find correct type to use from route prop
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   route: any;
 };
 
@@ -20,7 +24,9 @@ export default function ArticleDetail({
 }: ArticleDetailProps): JSX.Element {
   const { articleData } = route.params;
 
+  // Opens link in device's default browser
   function loadInBrowser(): void {
+    // eslint-disable-next-line no-console
     Linking.openURL(articleData.link).catch((error) => console.log(error));
   }
 
