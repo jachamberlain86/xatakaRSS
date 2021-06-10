@@ -26,18 +26,21 @@ export default function ArticleDetail({
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.flex}>
-      <View style={styles.flex}>
+      <View style={[styles.flex, styles.container]}>
         <Image source={{ uri: articleData.image }} style={styles.cardImage} />
-        <Text>{articleData.title}</Text>
-        <Text>{articleData.author}</Text>
-        <Text>{moment(articleData.pubDate).format('HH:mm, DD/MM/YY')}</Text>
-        <Text>{articleData.description}</Text>
+        <Text style={styles.detailTitle}>{articleData.title}</Text>
+        <Text style={styles.detailSubTitle}>
+          {articleData.author}:{' '}
+          {moment(articleData.pubDate).format('HH:mm, DD/MM/YY')}
+        </Text>
+        <Text style={styles.detailBody}>{articleData.description}</Text>
         <Pressable
+          style={styles.button}
           onPress={() => {
             loadInBrowser();
           }}
         >
-          <Text>Ver en el nevegador</Text>
+          <Text style={styles.buttonText}>Ver en el nevegador</Text>
         </Pressable>
       </View>
     </ScrollView>

@@ -23,10 +23,12 @@ export default function ArticleCard({
     <Pressable
       onPress={() => navigation.navigate('Article Detail', { articleData })}
     >
-      <View>
+      <View style={styles.card}>
         <Image source={{ uri: articleData.image }} style={styles.cardImage} />
-        <Text>{articleData.title}</Text>
-        <Text numberOfLines={2}>{articleData.description}</Text>
+        <Text style={styles.cardTitle}>{articleData.title}</Text>
+        <Text style={styles.cardBody} numberOfLines={2}>
+          {articleData.description}
+        </Text>
       </View>
     </Pressable>
   ) : null;

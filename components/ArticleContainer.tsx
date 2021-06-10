@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import { useXMLResponse } from '../hooks/useXMLResponse';
 
@@ -38,7 +38,7 @@ export default function ArticleContainer({
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.flex}>
-      <View style={styles.flex}>{articleCards}</View>
+      <View style={[styles.flex, styles.container]}>{articleCards}</View>
     </ScrollView>
   );
 }
