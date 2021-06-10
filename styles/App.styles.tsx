@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  cardImage: {
+    height: 200,
+    margin: 5,
+    resizeMode: 'stretch',
+  },
   highlight: {
     fontWeight: '700',
   },

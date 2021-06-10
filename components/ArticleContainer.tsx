@@ -18,7 +18,11 @@ export default function ArticleContainer(): JSX.Element {
   };
 
   if (parsedFeed) {
-    elementsToRender.elementsArr = parsedFeed.rss.channel.item;
+    const elementsArr = parsedFeed.rss.channel.item;
+    elementsArr.sort((a, b) => {
+      return Date.parse(b.pubDate) - Date.parse(a.pubDate);
+    });
+    elementsToRender.elementsArr = elementsArr;
   }
 
   const articleCards = useRenderElementsArr(elementsToRender);

@@ -20,6 +20,7 @@ export function useRenderElementsArr({
       const renderedElementsArr = elementsArr.map((element) => {
         return <ArticleCard key={uuidv4()} content={element} />;
       });
+
       setElements(renderedElementsArr);
     }
   }, [elementsArr]);

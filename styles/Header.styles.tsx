@@ -7,12 +7,6 @@ const styles = StyleSheet.create({
     paddingTop: 96,
   },
   logo: {
-    /*
-     * These negative margins allow the image to be offset similarly across screen sizes and component sizes.
-     *
-     * The source logo.png image is 512x512px, so as such, these margins attempt to be relative to the
-     * source image's size.
-     */
     marginBottom: -192,
     marginLeft: -128,
     opacity: 0.2,

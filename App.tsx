@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
@@ -11,7 +10,6 @@ import {
 import ArticleContainer from './components/ArticleContainer';
 
 import Colors from './styles/Colors';
-import styles from './styles/App.styles';
 
 const App = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
