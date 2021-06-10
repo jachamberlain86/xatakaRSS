@@ -8,38 +8,10 @@ import {
   View,
 } from 'react-native';
 
+import ArticleContainer from './components/ArticleContainer';
+
 import Colors from './styles/Colors';
 import styles from './styles/App.styles';
-
-const Section: React.FC<{
-  title: string;
-}> = ({ children, title }) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}
-      >
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}
-      >
-        {children}
-      </Text>
-    </View>
-  );
-};
 
 const App = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -60,7 +32,7 @@ const App = (): JSX.Element => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}
         >
-          <Section title="Section" />
+          <ArticleContainer />
         </View>
       </ScrollView>
     </SafeAreaView>
